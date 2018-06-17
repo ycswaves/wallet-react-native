@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text, Modal } from 'react-native';
 
-import { Titlebar } from '../Titlebar';
+import { Titlebar } from 'components/Titlebar';
 import { Pin } from './Pin';
 import { Timer } from './Timer';
 

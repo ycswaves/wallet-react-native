@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Spinner } from "../../Spinner";
-import { mockValidation } from '../../../services/validateOtp';
+import { Spinner } from 'components/Spinner';
+import { mockValidation } from 'services/validateOtp';
 
 export class Pin extends Component {
   

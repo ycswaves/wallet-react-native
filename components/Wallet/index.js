@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, ScrollView } from 'react-native';
 
 import { Header } from './Header';
-import { Card } from '../Card';
+import { Card } from 'components/Card';
 export class Wallet extends Component {
   render() {
     return (

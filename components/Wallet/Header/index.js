@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { Navbar } from '../../Navbar';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { LinearGradient } from 'expo';
 import { MaterialIcons } from '@expo/vector-icons';
-
-
-import { Toast } from '../../../components/Toast';
-// import { Tooltip } from 'components/Tooltip';
-
-
+import { Navbar } from 'components/Navbar';
+import { Toast } from 'components/Toast';
+import { Tooltip } from 'components/Tooltip';
 
 export class Header extends Component {
   state = {
@@ -35,15 +31,12 @@ export class Header extends Component {
               <Text style={styles.subtitle}>by OVO</Text>
             </View>
           </Navbar>
-          {/* <View className="tooltip-container">
           {showTip &&
-            <Tooltip>
-              <p>Check your payment methods here.</p>
+            <Tooltip style={styles.toolTip}>
+              <Text style={styles.tooltipText}>Check your payment methods here.</Text>
             </Tooltip>}
-          </View> */}
           {showToast && 
             <Toast dismiss={this.dismissToast}>
-              {/* <Text className="wallet-activated-icon"/> */}
               <View style={styles.toastView}>
                 <Image style={{}} source={require('../../../images/icon/wallet-activated.png')} />
                 <Text style={styles.activateText}>
@@ -84,7 +77,6 @@ const styles = StyleSheet.create({
 
   backgroundImg: {
     position: 'absolute',
-    zIndex: -1,
   },
 
   subtitle: {
@@ -129,5 +121,20 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10
   },
+
+  toolTip: {
+    position: 'absolute',
+    right: 15,
+    top: 65,
+    width: '48%',
+    zIndex: 10,
+  },
+
+  tooltipText: {
+    color: 'white',
+    alignSelf: 'center',
+    marginTop: -10,
+    textAlign: 'center'
+  }
 
 });
