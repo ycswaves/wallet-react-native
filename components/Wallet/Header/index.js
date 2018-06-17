@@ -5,6 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Navbar } from 'components/Navbar';
 import { Toast } from 'components/Toast';
 import { Tooltip } from 'components/Tooltip';
+import { Actions } from 'react-native-router-flux';
 
 export class Header extends Component {
   state = {
@@ -25,7 +26,7 @@ export class Header extends Component {
           locations={[0, 0.57, 0.71, 1]}
           >
           <Image style={styles.backgroundImg} source={require('../../../images/bubble-pattern.png')} />
-          <Navbar>
+          <Navbar backAction={() => {Actions.pop()}}>
             <View style={styles.containerCenter}>
               <Text>GrabPay</Text>
               <Text style={styles.subtitle}>by OVO</Text>

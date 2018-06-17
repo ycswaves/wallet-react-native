@@ -20,12 +20,11 @@ export class Pin extends Component {
     mockValidation(password).then(isValid => {
       let newState = {};
       if (isValid) {
-        this.props.validateOtp();
-        return;
+        this.props.onValid();
       } else {
         newState.misMatch = true;
-        newState.password = '';
       }
+      newState.password = '';
       newState.isValidating = false;
       this.setState(newState);
     });

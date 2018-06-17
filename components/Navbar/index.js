@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, TouchableHighlight } from 'react-native';
 import { EvilIcons } from '@expo/vector-icons';
-
-// import './navbar.scss';
 
 export const Navbar = (props) => {
   return (
     <View style={styles.container}>
-      <EvilIcons style={styles.iconLeft} name="chevron-left" size={40} />
+      <TouchableHighlight style={styles.iconLeft} onPress={props.backAction}>
+        <EvilIcons name="chevron-left" size={40} />
+      </TouchableHighlight>
       {props.children}
       <Image style={styles.iconRight} source={require('../../images/icon/payment-methods.png')} />
     </View>
