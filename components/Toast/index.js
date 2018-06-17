@@ -1,24 +1,39 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
-
-// import './toast.scss';
+import { StyleSheet, Text, Animated } from 'react-native';
 
 export class Toast extends Component {
   timer = null;
 
   state = {
-    toBeDismissed: false
+    toBeDismissed: false,
+    scale: new Animated.Value(0)
   }
 
+  createScaleAnimation(scaleTo, delay = 0) {
+    return Animated.timing(
+      this.state.scale, 
+      {
+        toValue: scaleTo,
+        duration: 300,
+        delay: delay,
+      }
+    )
+  }
+
+  scaleUp = this.createScaleAnimation(1, 500)
+  scaleDown = this.createScaleAnimation(0)
+
   componentDidMount() {
-    // this.timer = setTimeout(() => {
-    //   this.dismiss();
-    // }, 3000);
+    this.timer = setTimeout(() => {
+      this.dismiss();
+    }, 4000);
+    this.scaleUp.start()
   }
 
   dismiss = () => {
-    this.setState({toBeDismissed: true});
-    setTimeout(this.props.dismiss, 301);
+    this.scaleDown.start(() => {
+      this.props.dismiss()
+    })
   }
 
   componentWillUnmount() {
@@ -26,12 +41,16 @@ export class Toast extends Component {
   }
 
   render() {
-    const { toBeDismissed } = this.state;
+    const { scale } = this.state;
     return (
-      <View style={styles.container} className={`toast ${toBeDismissed? 'toast-to-be-dismissed' : ''}`}>
+      <Animated.View 
+        style={[
+          styles.container,
+          { transform: [{ scale }] } 
+        ]} >
         {this.props.children}
-        <Text style={styles.closeBtn} className="toast__close" onPress={this.dismiss}>&#10005;</Text>
-      </View>
+        <Text style={styles.closeBtn} onPress={this.dismiss}>&#10005;</Text>
+      </Animated.View>
     )
   }
 }
